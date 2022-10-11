@@ -1,71 +1,74 @@
-#include <iostream>
+#include<iostream>
+#include<cstdlib>
 using namespace std;
 
-class Node {
-    
-    public:
-    int value;
-    Node* previous;
-    Node* next;
-};
 
-void printforward(Node*head){
-    Node* start=head;
-    while(start != nullptr){
+	class node{
+		
+		public:
+		int data;
+		node* next;
+		node* prev;
+	};
 	
-    cout<<start->value;
-    start=start->next;
+	void printforward(node*head){
+    node* temp=head;
+    while(temp != NULL){
+	
+    cout<<temp->data;
+    temp=temp->next;
     
 	}
 }
-void printbackward(Node*tail){
-    Node* start=tail;
-    while(start != nullptr){
 	
-    cout<<start->value;
-    start=start->previous;
+	void printbackward(node*tail){
+    node* temp=tail;
+    while(temp != NULL){
+	
+    cout<<temp->data;
+    temp=temp->prev;
 }
 }
 
 
-int main()
-{
-    Node* head;
-    Node* tail;
-   //first node  
-   Node* node=new Node();
-   node->value=5;
-   node->next= nullptr;
-   node->previous= nullptr;
-   head=node;
-   tail=node;
-   //second node
-   node = new Node();
-   node->value=6;
-   node->next= nullptr;
-   node->previous=tail;
-   tail->next=node;
-   tail=node;
-   //third node 
-   
-node = new Node();
-   node->value=7;
-   node->next= nullptr;
-   node->previous=tail;
-   tail->next=node;
-   tail=node;
-   //fourth node
-   
-   node = new Node();
-   node->value=8;
-   node->next=nullptr;
-   node->previous=tail;
-   tail->next=node;
-   tail=node;
-   cout<<"forward direction "<<endl;
+int main(){
+	node* head;
+	node* tail;
+	node* n;
+	
+	//first node
+	n= new node;
+	n->data =5;
+	n->prev =NULL;
+	head =n;
+	tail=n;
+	
+	//second node
+	n = new node;
+	n->data = 6;
+	n->prev = tail;
+	tail->next=n;
+	tail = n;
+	
+	//third node
+	n = new node;
+	n->data =7;
+	n->prev=tail;
+	tail->next=n;
+	tail=n;
+	
+	//fourth node
+	n= new node;
+	n->data =8;
+	n->prev=tail;
+	tail->next=n;
+	tail=n;
+	tail->next=NULL;
+	
+	
+	cout<<"forward direction "<<endl;
    printforward(head);
-   
-   cout<<"\nbackward direction"<<endl;
+	cout<<"\nbackward direction"<<endl;
    printbackward(tail);
-  
+	return 0;
 }

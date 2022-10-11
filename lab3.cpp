@@ -1,45 +1,60 @@
-#include <vector>
 #include <iostream>
-
 using namespace std;
-std::vector< int > arr;
+
+int values;
+bool want;
+int *DynamicArray;
+int *newArr;
+void create_array()
+{
+   DynamicArray = new int[values];
+   for (int i = 0; i < values; i++) {
+       cout << "Enter Value: ";
+       cin >> DynamicArray[i];
+   }
+
+   cout << "do u want print the array ? if yes press 1 if no press 0 :";
+   cin>> want ;
+
+   if (want == 1) {
+       for (int i = 0 ; i < values; i++) {
+           cout << DynamicArray[i] <<endl;
+       }
+   }
+
+}
+void resize()
+{
+   int newvalue;
+   cout << "Enter new size :"<<endl;
+   cin >> newvalue;
+    
+    
+   newArr = new int[newvalue];
+   for (int i = 0; i < newvalue; i++) {
+       cout << "Enter Value: ";
+       cin >> newArr[i];
+   }
+    cout << "do u want print the array ? if yes press 1 if no press 0 :";
+    cin>> want ;
+   if (want == 1) {
+       for (int i = 0 ; i < values ; i++) {
+           cout <<DynamicArray[i]<<" ";
+       }
+       
+       for (int j = 0 ; j < newvalue; j++) {
+           cout <<newArr[j]<<" ";
+
+       }
+   }
+     
+}
 
 int main()
+
 {
-    bool want;
-    int element, values;
-    cout << "Enter the size of array :";
-    cin>>element;
-    
-    for (int i = 0 ; i < element; i++) {
-        cout << "Enter array "<<i<<" : ";
-        cin >> values;
-        arr.push_back(values);
-    }
-    
-    for (int  i = 0; i < element; i++) {
-        cout << arr[i]<<" ";
-    }
-    cout << endl;
-    cout << "Want to resize ?: 0 OR 1 :"<<endl;
-    cin >> want;
-    if (want == 1) {
-        int newelemnt;
-        int newvalues;
-        cout << "Enter the size of array :"<<endl;
-        cin >> newelemnt;
-        for (int i = 0 ; i < element; i++) {
-            cout << "Enter value : ";
-            cin>> newvalues;
-            arr.push_back(newvalues);
-        }
-        
-        for (int j = 0 ; j < newelemnt + element; j++) {
-            cout << "New array :" << arr[j] << endl;
-        }
-    }
-    
-    
-    return 0;
-    
+   cout <<"How many integer you want ?"<<endl;
+   cin >> values;
+   create_array();
+   resize();
 }
